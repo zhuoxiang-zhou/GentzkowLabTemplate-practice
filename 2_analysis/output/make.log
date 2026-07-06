@@ -1,10 +1,10 @@
 
-Script my_shell_script.sh in zsh started at 2026-07-06 15:38:38
+Script my_shell_script.sh in zsh started at 2026-07-06 15:48:00
 Hello world!
-Script my_shell_script.sh finished successfully at 2026-07-06 15:38:38
+Script my_shell_script.sh finished successfully at 2026-07-06 15:48:00
 
-Script analyze_data.do in StataMP started at 2026-07-06 15:38:38
-Script analyze_data.do finished successfully at 2026-07-06 15:38:39
+Script analyze_data.do in StataMP started at 2026-07-06 15:48:00
+Script analyze_data.do finished successfully at 2026-07-06 15:48:01
 Output:
 
   ___  ____  ____  ____  ____ ®
@@ -163,6 +163,6 @@ file
 end of do-file
 
 The following files were created in analyze_data.do:
-figure_hwy.jpg 
+figure_hwy.jpg table_reg_clustered.tex figure_city.jpg 
 
-make.sh finished at 2026-07-06 15:38:39
+make.sh finished at 2026-07-06 15:48:01

@@ -1,10 +1,10 @@
 
-Script my_shell_script.sh in zsh started at 2026-07-06 15:38:37
+Script my_shell_script.sh in zsh started at 2026-07-06 15:47:59
 Hello world!
-Script my_shell_script.sh finished successfully at 2026-07-06 15:38:37
+Script my_shell_script.sh finished successfully at 2026-07-06 15:47:59
 
-Script wrangle_data.do in StataMP started at 2026-07-06 15:38:37
-Script wrangle_data.do finished successfully at 2026-07-06 15:38:37
+Script wrangle_data.do in StataMP started at 2026-07-06 15:47:59
+Script wrangle_data.do finished successfully at 2026-07-06 15:48:00
 Output:
 
   ___  ____  ____  ____  ____ ®
@@ -75,4 +75,7 @@ file ../output/mpg.dta saved
 . 
 end of do-file
 
-make.sh finished at 2026-07-06 15:38:37
+The following files were created in wrangle_data.do:
+mpg.dta 
+
+make.sh finished at 2026-07-06 15:48:00

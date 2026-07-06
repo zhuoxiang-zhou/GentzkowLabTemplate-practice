@@ -1,9 +1,9 @@
 
-Script my_shell_script.sh in zsh started at 2026-07-06 15:38:39
+Script my_shell_script.sh in zsh started at 2026-07-06 15:48:01
 Hello world!
-Script my_shell_script.sh finished successfully at 2026-07-06 15:38:39
+Script my_shell_script.sh finished successfully at 2026-07-06 15:48:01
 
-Script my_project_slides.tex in latexmk -pdf -bibtex started at 2026-07-06 15:38:39
+Script my_project_slides.tex in latexmk -pdf -bibtex started at 2026-07-06 15:48:01
 Rc files read (in order):
   NONE
 Latexmk: This is Latexmk, John Collins, 9 March 2026. Version 4.88.
@@ -287,15 +287,20 @@ No file my_project_slides.nav.
 ocal/texlive/2026/texmf-dist/fonts/enc/dvips/inter/a_djwlf6.enc}] [2] [3]
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd) [4] [5]
-[6] [7] [8] [9] [10] [11] (./my_project_slides.aux)
+[6] [7] [8] [9 <../input/figure_city.jpg>] (../input/table_reg_clustered.tex)
+Overfull \vbox (21.45634pt too high) detected at line 78
+[10] [11] [12] (./my_project_slides.aux)
 
 Package rerunfilecheck Warning: File `my_project_slides.out' has changed.
 (rerunfilecheck)                Rerun to get outlines right
 (rerunfilecheck)                or use package `bookmark'.
 
- )</usr/local/texlive/2026/texmf-dist/fonts/type1/public/inter/Inter-Bold.pfb><
-/usr/local/texlive/2026/texmf-dist/fonts/type1/public/inter/Inter-Regular.pfb>
-Output written on my_project_slides.pdf (11 pages, 85250 bytes).
+ )
+(see the transcript file for additional information)</usr/local/texlive/2026/te
+xmf-dist/fonts/type1/public/inter/Inter-Bold.pfb></usr/local/texlive/2026/texmf
+-dist/fonts/type1/public/inter/Inter-Italic.pfb></usr/local/texlive/2026/texmf-
+dist/fonts/type1/public/inter/Inter-Regular.pfb>
+Output written on my_project_slides.pdf (12 pages, 223469 bytes).
 Transcript written on my_project_slides.log.
 Latexmk: Getting log file 'my_project_slides.log'
 Latexmk: Examining 'my_project_slides.fls'
@@ -584,10 +589,14 @@ f-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/local/texlive/2026/texmf-dist/fo
 nts/enc/dvips/inter/a_djwlf6.enc}] [2] [3]
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd)
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd) [4] [5]
-[6] [7] [8] [9] [10] [11] (./my_project_slides.aux) )</usr/local/texlive/2026/t
-exmf-dist/fonts/type1/public/inter/Inter-Bold.pfb></usr/local/texlive/2026/texm
-f-dist/fonts/type1/public/inter/Inter-Regular.pfb>
-Output written on my_project_slides.pdf (11 pages, 85496 bytes).
+[6] [7] [8] [9 <../input/figure_city.jpg>] (../input/table_reg_clustered.tex)
+Overfull \vbox (21.45634pt too high) detected at line 78
+[10] [11] [12] (./my_project_slides.aux) )
+(see the transcript file for additional information)</usr/local/texlive/2026/te
+xmf-dist/fonts/type1/public/inter/Inter-Bold.pfb></usr/local/texlive/2026/texmf
+-dist/fonts/type1/public/inter/Inter-Italic.pfb></usr/local/texlive/2026/texmf-
+dist/fonts/type1/public/inter/Inter-Regular.pfb>
+Output written on my_project_slides.pdf (12 pages, 223705 bytes).
 Transcript written on my_project_slides.log.
 Latexmk: Getting log file 'my_project_slides.log'
 Latexmk: Examining 'my_project_slides.fls'
@@ -595,9 +604,9 @@ Latexmk: Examining 'my_project_slides.log'
 Latexmk: Log file says output to 'my_project_slides.pdf'
 Latexmk: All targets (my_project_slides.pdf) are up-to-date
 
-Script my_project_slides.tex finished successfully at 2026-07-06 15:38:41
+Script my_project_slides.tex finished successfully at 2026-07-06 15:48:03
 
 The following files were created in my_project_slides.tex:
 my_project_slides.pdf 
 
-make.sh finished at 2026-07-06 15:38:41
+make.sh finished at 2026-07-06 15:48:03
