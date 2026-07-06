@@ -1,4 +1,159 @@
-make.sh started at 2024-08-12 17:38:54
-Executing: zsh my_shell_script.sh
+
+Script my_shell_script.sh in zsh started at 2026-07-06 15:21:02
 Hello world!
-make.sh finished at 2024-08-12 17:38:54
+Script my_shell_script.sh finished successfully at 2026-07-06 15:21:02
+
+Script analyze_data.do in StataMP started at 2026-07-06 15:21:02
+Script analyze_data.do finished successfully at 2026-07-06 15:21:03
+Output:
+
+  ___  ____  ____  ____  ____ ®
+ /__    /   ____/   /   ____/      StataNow 19.5
+___/   /   /___/   /   /___/       MP—Parallel Edition
+
+ Statistics and Data Science       Copyright 1985-2025 StataCorp LLC
+                                   StataCorp
+                                   4905 Lakeway Drive
+                                   College Station, Texas 77845 USA
+                                   800-782-8272        https://www.stata.com
+                                   979-696-4600        service@stata.com
+
+Stata license: Unlimited-user 4-core network, expiring 21 Jul 2027
+Serial number: 501909302705
+  Licensed to: Zhuoxiang Zhou
+               Stanford University
+
+Notes:
+      1. Stata is running in batch mode.
+      2. Unicode is supported; see help unicode_advice.
+      3. More than 2 billion observations are allowed; see help obs_advice.
+      4. Maximum number of variables is set to 5,000 but can be increased; see
+          help set_maxvar.
+
+. do analyze_data.do 
+
+. * =============================================================================
+. * Short description of script's purpose
+. * =============================================================================
+. 
+. clear all
+
+. adopath + "../../lib/stata"
+  [1]  (BASE)      "/Applications/StataNow/ado/base/"
+  [2]  (SITE)      "/Applications/StataNow/ado/site/"
+  [3]              "."
+  [4]  (PERSONAL)  "/Users/szzhou/Documents/Stata/ado/personal/"
+  [5]  (PLUS)      "/Users/szzhou/Library/Application Support/Stata/ado/plus/"
+  [6]  (OLDPLACE)  "~/ado/"
+  [7]              "../../lib/stata"
+
+. set linesize 100
+
+. set scheme stcolor
+
+. 
+. * =============================================================================
+. 
+. program main
+  1.     use "../input/mpg.dta", clear
+  2.     regression_table
+  3.         city_figure
+  4.         hwy_figure
+  5. end
+
+. 
+. program regression_table
+  1.         reg displ cty
+  2.         estimates store cty
+  3.         
+.         reg displ hwy
+  4.         estimates store hwy
+  5.         
+.         reg displ hwy cty
+  6.         estimates store hwy_cty
+  7.         
+.         esttab hwy cty hwy_cty using ../output/table_reg.tex, replace
+  8. end
+
+. 
+. program city_figure
+  1.     scatter cty displ, xtitle("Engine displacement (L)") ///
+>                 ytitle("City fuel economy (mpg)") ///
+>                 mcolor(year)
+  2.         graph export ../output/figure_city.jpg, replace
+  3. end
+
+. 
+. program hwy_figure
+  1.     scatter hwy displ, xtitle("Engine displacement (L)") ///
+>                 ytitle("Highway fuel economy (mpg)") ///
+>                 mcolor(year)
+  2.         graph export ../output/figure_hwy.jpg, replace
+  3. end
+
+. 
+. * Execute
+. main
+
+      Source |       SS           df       MS      Number of obs   =       234
+-------------+----------------------------------   F(1, 232)       =    408.25
+       Model |  247.987219         1  247.987219   Prob > F        =    0.0000
+    Residual |   140.92661       232  .607442286   R-squared       =    0.6376
+-------------+----------------------------------   Adj R-squared   =    0.6361
+       Total |  388.913829       233  1.66915806   Root MSE        =    .77939
+
+------------------------------------------------------------------------------
+       displ | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+         cty |  -.2424045   .0119972   -20.21   0.000    -.2660418   -.2187672
+       _cons |   7.558485   .2085784    36.24   0.000     7.147536    7.969435
+------------------------------------------------------------------------------
+
+      Source |       SS           df       MS      Number of obs   =       234
+-------------+----------------------------------   F(1, 232)       =    329.45
+       Model |  228.209451         1  228.209451   Prob > F        =    0.0000
+    Residual |  160.704378       232  .692691283   R-squared       =    0.5868
+-------------+----------------------------------   Adj R-squared   =    0.5850
+       Total |  388.913829       233  1.66915806   Root MSE        =    .83228
+
+------------------------------------------------------------------------------
+       displ | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+         hwy |  -.1662008   .0091566   -18.15   0.000    -.1842416     -.14816
+       _cons |    7.36757   .2214218    33.27   0.000     6.931315    7.803824
+------------------------------------------------------------------------------
+
+      Source |       SS           df       MS      Number of obs   =       234
+-------------+----------------------------------   F(2, 231)       =    203.32
+       Model |  248.020057         2  124.010029   Prob > F        =    0.0000
+    Residual |  140.893772       231  .609929747   R-squared       =    0.6377
+-------------+----------------------------------   Adj R-squared   =    0.6346
+       Total |  388.913829       233  1.66915806   Root MSE        =    .78098
+
+------------------------------------------------------------------------------
+       displ | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+-------------+----------------------------------------------------------------
+         hwy |  -.0067896   .0292611    -0.23   0.817    -.0644423    .0508631
+         cty |  -.2333237   .0409402    -5.70   0.000    -.3139876   -.1526598
+       _cons |   7.564542   .2106286    35.91   0.000     7.149543    7.979541
+------------------------------------------------------------------------------
+(file ../output/table_reg.tex not found)
+(output written to ../output/table_reg.tex)
+(note:  named style year not found in class color, default attributes used)
+(note:  named style year not found in class color, default attributes used)
+file
+    /Users/szzhou/Predoc/Practice/GentzkowLabTemplate-practice/2_analysis/source/../output/figure_
+    > city.jpg saved as JPG format
+(note:  named style year not found in class color, default attributes used)
+(note:  named style year not found in class color, default attributes used)
+file
+    /Users/szzhou/Predoc/Practice/GentzkowLabTemplate-practice/2_analysis/source/../output/figure_
+    > hwy.jpg saved as JPG format
+
+. 
+end of do-file
+
+The following files were created in analyze_data.do:
+figure_hwy.jpg 
+
+make.sh finished at 2026-07-06 15:21:03
