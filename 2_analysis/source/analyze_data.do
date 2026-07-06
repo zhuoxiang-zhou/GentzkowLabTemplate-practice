@@ -30,8 +30,11 @@ program regression_table
 end
 
 program city_figure
-    scatter cty displ, xtitle("Engine displacement (L)") ///
-		ytitle("City fuel economy (mpg)") ///
+	tempvar log_cty
+	gen `log_cty' = log(cty)
+
+    scatter `log_cty' displ, xtitle("Engine displacement (L)") ///
+		ytitle("Log city fuel economy (mpg)") ///
 		mcolor(year)
 	graph export ../output/figure_city.jpg, replace
 end
