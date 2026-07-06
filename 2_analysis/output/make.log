@@ -1,10 +1,10 @@
 
-Script my_shell_script.sh in zsh started at 2026-07-06 15:21:02
+Script my_shell_script.sh in zsh started at 2026-07-06 15:38:38
 Hello world!
-Script my_shell_script.sh finished successfully at 2026-07-06 15:21:02
+Script my_shell_script.sh finished successfully at 2026-07-06 15:38:38
 
-Script analyze_data.do in StataMP started at 2026-07-06 15:21:02
-Script analyze_data.do finished successfully at 2026-07-06 15:21:03
+Script analyze_data.do in StataMP started at 2026-07-06 15:38:38
+Script analyze_data.do finished successfully at 2026-07-06 15:38:39
 Output:
 
   ___  ____  ____  ____  ____ ®
@@ -63,25 +63,31 @@ Notes:
 
 . 
 . program regression_table
-  1.         reg displ cty
-  2.         estimates store cty
-  3.         
-.         reg displ hwy
-  4.         estimates store hwy
-  5.         
-.         reg displ hwy cty
-  6.         estimates store hwy_cty
-  7.         
-.         esttab hwy cty hwy_cty using ../output/table_reg.tex, replace
+  1.     reg displ cty, vce(cluster year)
+  2.     estimates store cty_clustered
+  3.     
+.     reg displ hwy, vce(cluster year)
+  4.     estimates store hwy_clustered
+  5.     
+.     reg displ hwy cty, vce(cluster year)
+  6.     estimates store hwy_cty_clustered
+  7.     
+.     esttab hwy_clustered cty_clustered hwy_cty_clustered ///
+>         using ../output/table_reg_clustered.tex, ///
+>         cells(b se p) ///
+>         replace
   8. end
 
 . 
 . program city_figure
-  1.     scatter cty displ, xtitle("Engine displacement (L)") ///
->                 ytitle("City fuel economy (mpg)") ///
+  1.         tempvar log_cty
+  2.         gen `log_cty' = log(cty)
+  3. 
+.     scatter `log_cty' displ, xtitle("Engine displacement (L)") ///
+>                 ytitle("Log city fuel economy (mpg)") ///
 >                 mcolor(year)
-  2.         graph export ../output/figure_city.jpg, replace
-  3. end
+  4.         graph export ../output/figure_city.jpg, replace
+  5. end
 
 . 
 . program hwy_figure
@@ -95,50 +101,53 @@ Notes:
 . * Execute
 . main
 
-      Source |       SS           df       MS      Number of obs   =       234
--------------+----------------------------------   F(1, 232)       =    408.25
-       Model |  247.987219         1  247.987219   Prob > F        =    0.0000
-    Residual |   140.92661       232  .607442286   R-squared       =    0.6376
--------------+----------------------------------   Adj R-squared   =    0.6361
-       Total |  388.913829       233  1.66915806   Root MSE        =    .77939
+Linear regression                               Number of obs     =        234
+                                                F(0, 1)           =          .
+                                                Prob > F          =          .
+                                                R-squared         =     0.6376
+                                                Root MSE          =     .77939
 
+                                   (Std. err. adjusted for 2 clusters in year)
 ------------------------------------------------------------------------------
-       displ | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+             |               Robust
+       displ | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-         cty |  -.2424045   .0119972   -20.21   0.000    -.2660418   -.2187672
-       _cons |   7.558485   .2085784    36.24   0.000     7.147536    7.969435
+         cty |  -.2424045   .0218922   -11.07   0.057    -.5205709     .035762
+       _cons |   7.558485   .5216768    14.49   0.044     .9299532    14.18702
 ------------------------------------------------------------------------------
 
-      Source |       SS           df       MS      Number of obs   =       234
--------------+----------------------------------   F(1, 232)       =    329.45
-       Model |  228.209451         1  228.209451   Prob > F        =    0.0000
-    Residual |  160.704378       232  .692691283   R-squared       =    0.5868
--------------+----------------------------------   Adj R-squared   =    0.5850
-       Total |  388.913829       233  1.66915806   Root MSE        =    .83228
+Linear regression                               Number of obs     =        234
+                                                F(0, 1)           =          .
+                                                Prob > F          =          .
+                                                R-squared         =     0.5868
+                                                Root MSE          =     .83228
 
+                                   (Std. err. adjusted for 2 clusters in year)
 ------------------------------------------------------------------------------
-       displ | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+             |               Robust
+       displ | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-         hwy |  -.1662008   .0091566   -18.15   0.000    -.1842416     -.14816
-       _cons |    7.36757   .2214218    33.27   0.000     6.931315    7.803824
+         hwy |  -.1662008   .0048522   -34.25   0.019    -.2278539   -.1045476
+       _cons |    7.36757   .3068806    24.01   0.027     3.468282    11.26686
 ------------------------------------------------------------------------------
 
-      Source |       SS           df       MS      Number of obs   =       234
--------------+----------------------------------   F(2, 231)       =    203.32
-       Model |  248.020057         2  124.010029   Prob > F        =    0.0000
-    Residual |  140.893772       231  .609929747   R-squared       =    0.6377
--------------+----------------------------------   Adj R-squared   =    0.6346
-       Total |  388.913829       233  1.66915806   Root MSE        =    .78098
+Linear regression                               Number of obs     =        234
+                                                F(0, 1)           =          .
+                                                Prob > F          =          .
+                                                R-squared         =     0.6377
+                                                Root MSE          =     .78098
 
+                                   (Std. err. adjusted for 2 clusters in year)
 ------------------------------------------------------------------------------
-       displ | Coefficient  Std. err.      t    P>|t|     [95% conf. interval]
+             |               Robust
+       displ | Coefficient  std. err.      t    P>|t|     [95% conf. interval]
 -------------+----------------------------------------------------------------
-         hwy |  -.0067896   .0292611    -0.23   0.817    -.0644423    .0508631
-         cty |  -.2333237   .0409402    -5.70   0.000    -.3139876   -.1526598
-       _cons |   7.564542   .2106286    35.91   0.000     7.149543    7.979541
+         hwy |  -.0067896   .0770109    -0.09   0.944    -.9853057    .9717266
+         cty |  -.2333237   .1246275    -1.87   0.312    -1.816866    1.350219
+       _cons |   7.564542   .4504002    16.80   0.038     1.841665    13.28742
 ------------------------------------------------------------------------------
-(file ../output/table_reg.tex not found)
-(output written to ../output/table_reg.tex)
+(file ../output/table_reg_clustered.tex not found)
+(output written to ../output/table_reg_clustered.tex)
 (note:  named style year not found in class color, default attributes used)
 (note:  named style year not found in class color, default attributes used)
 file
@@ -156,4 +165,4 @@ end of do-file
 The following files were created in analyze_data.do:
 figure_hwy.jpg 
 
-make.sh finished at 2026-07-06 15:21:03
+make.sh finished at 2026-07-06 15:38:39

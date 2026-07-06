@@ -17,16 +17,19 @@ program main
 end
 
 program regression_table
-	reg displ cty
-	estimates store cty
-	
-	reg displ hwy
-	estimates store hwy
-	
-	reg displ hwy cty
-	estimates store hwy_cty
-	
-	esttab hwy cty hwy_cty using ../output/table_reg.tex, replace
+    reg displ cty, vce(cluster year)
+    estimates store cty_clustered
+    
+    reg displ hwy, vce(cluster year)
+    estimates store hwy_clustered
+    
+    reg displ hwy cty, vce(cluster year)
+    estimates store hwy_cty_clustered
+    
+    esttab hwy_clustered cty_clustered hwy_cty_clustered ///
+        using ../output/table_reg_clustered.tex, ///
+        cells(b se p) ///
+        replace
 end
 
 program city_figure
