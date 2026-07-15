@@ -43,11 +43,13 @@ program city_figure
 end
 
 program hwy_figure
-    scatter hwy displ, xtitle("Engine displacement (L)") ///
-		ytitle("Highway fuel economy (mpg)") ///
-		mcolor(year)
-	graph export ../output/figure_hwy.jpg, replace
-end
+    tempvar log_hwy
+    gen `log_hwy' = log(hwy)
 
+    scatter `log_hwy' displ, xtitle("Engine displacement (L)") ///
+        ytitle("Log highway fuel economy (mpg)") ///
+        mcolor(year)
+    graph export ../output/figure_hwy.jpg, replace
+end
 * Execute
 main
