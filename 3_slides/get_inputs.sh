@@ -17,6 +17,7 @@
 # ==============================================================================
 INPUT_FILES=(
     ../2_analysis/output/figure_city.jpg
+    ../2_analysis/output/figure_hwy.jpg
     ../2_analysis/output/table_reg_clustered.tex
 )
 
